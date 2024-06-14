@@ -18,3 +18,9 @@ export interface product{
   id:string
 
 }
+
+export interface pageData{
+  page:number,
+  products:product[],
+  total:number
+}

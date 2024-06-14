@@ -1,9 +1,8 @@
 import {Component, inject, OnInit} from '@angular/core';
-import {RegisterService} from "../register.service";
 import {Observable, tap} from "rxjs";
 import {ProductsService} from "../../products.service";
-import {JsonPipe, NgForOf, NgIf} from "@angular/common";
-import {product} from "../Interfaces";
+import {JsonPipe, NgClass, NgForOf, NgIf} from "@angular/common";
+import {StatesService} from "../../states.service";
 
 @Component({
   selector: 'app-shop',
@@ -11,24 +10,68 @@ import {product} from "../Interfaces";
   imports: [
     NgForOf,
     JsonPipe,
-    NgIf
+    NgIf,
+    NgClass
   ],
   templateUrl: './shop.component.html',
   styleUrl: './shop.component.css'
 })
 export class ShopComponent implements OnInit{
-  products:product[]=[];
-
+  pageCache=inject(StatesService)
+  page:number=1
+  pagesArr:number[]=[]
   private readonly productsService=inject(ProductsService)
+  category:number|null=null
 
 
   ngOnInit() {
-    this.productsService.getPosts().pipe(
-      tap(response=>{
-        this.products=[...this.products,...response.products]
-        console.log(this.products)
-    })
-    ).subscribe()
+    this.fetchPage()
+    if(this.pageCache.getTotalPages()){
+      this.pagesArr= Array(Math.ceil(this.pageCache.getTotalPages())).fill(1).map((x,i)=>i+1);
+    }
+  }
+
+  toPage(num:number):void{
+    this.page=num
+    this.fetchPage()
+  }
+
+  fetchPage():void{
+    if(!this.pageCache.getPage(this.page)){
+      this.productsService.getPosts(this.page,this.category).pipe(
+        tap(response=>{
+          console.log("inside")
+          this.pageCache.setPageCache(response)
+          this.pagesArr= Array(Math.ceil(this.pageCache.getTotalPages())).fill(1).map((x,i)=>i+1);
+        })
+      ).subscribe()
+    }
+  }
+
+  changePage(arg:string):void{
+    if(arg==="+"&&this.pageCache.getTotalPages()>this.page){
+
+      this.page++
+
+    }else if(this.page>1&&arg==="-"){
+      this.page--
+    }
+    // console.log(this.page)
+    this.fetchPage()
+  }
+
+  changeCategory(category:string){
+    this.page=1
+    if(category==="laptop"){
+      this.category=1
+    }else if(category==="phone"){
+      this.category=2
+    }else{
+      this.category=null
+    }
+    this.pageCache.clearPageCache()
+    this.fetchPage()
+
   }
 
 
