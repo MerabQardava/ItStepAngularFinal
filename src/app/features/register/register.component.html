@@ -1,0 +1,52 @@
+<div style="min-width: 300px" class="container mt-5 w-50 mw">
+  <form (ngSubmit)="onSubmit()">
+    <h1 class="mb-5">Register</h1>
+
+    <div class="form-floating mb-3">
+      <input type="text" class="form-control" id="firstName" placeholder="First Name" [(ngModel)]="firstName" name="firstName" required>
+      <label for="firstName">First Name</label>
+    </div>
+    <div class="form-floating mb-3">
+      <input type="text" class="form-control" id="lastName" placeholder="Last Name" [(ngModel)]="lastName" name="lastName" required>
+      <label for="lastName">Last Name</label>
+    </div>
+    <div class="form-floating mb-3">
+      <input type="number" class="form-control" id="age" placeholder="Age" [(ngModel)]="age" name="age" required>
+      <label for="age">Age</label>
+    </div>
+    <div class="form-floating mb-3">
+      <input type="text" class="form-control" id="address" placeholder="Address" [(ngModel)]="address" name="address" required>
+      <label for="address">Address</label>
+    </div>
+    <div class="form-floating mb-3">
+      <input type="tel" class="form-control" id="phone" placeholder="Phone" [(ngModel)]="phone" name="phone" required>
+      <label for="phone">Phone</label>
+    </div>
+    <div class="form-floating mb-3">
+      <input type="text" class="form-control" id="zipcode" placeholder="Zipcode" [(ngModel)]="zipcode" name="zipcode" required>
+      <label for="zipcode">Zipcode</label>
+    </div>
+    <div class="form-floating mb-3">
+      <input type="url" class="form-control" id="avatar" placeholder="Avatar" [(ngModel)]="avatar" name="avatar" required>
+      <label for="avatar">Avatar URL</label>
+    </div>
+    <div class="form-floating mb-3">
+      <input type="text" class="form-control" id="gender" placeholder="Gender" [(ngModel)]="gender" name="gender" required>
+      <label for="gender">Gender</label>
+    </div>
+    <div class="form-floating mb-3">
+      <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" [(ngModel)]="email" name="email" required>
+      <label for="floatingInput">Email address</label>
+    </div>
+    <div class="form-floating">
+      <input type="password" class="form-control" id="floatingPassword" placeholder="Password" [(ngModel)]="password" name="password" required>
+      <label for="floatingPassword">Password</label>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Register</button>
+  </form>
+
+  <div *ngIf="errorMessage" class="alert alert-danger mt-3">
+    {{ errorMessage }}
+  </div>
+</div>
