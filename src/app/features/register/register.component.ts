@@ -2,13 +2,16 @@ import { Component } from '@angular/core';
 import {AuthService} from "./auth.service";
 import {FormsModule} from "@angular/forms";
 import {NgIf} from "@angular/common";
+import {MatFormField, MatLabel} from "@angular/material/form-field";
 
 @Component({
   selector: 'app-register',
   standalone: true,
   imports: [
     FormsModule,
-    NgIf
+    NgIf,
+    MatFormField,
+    MatLabel
   ],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'

@@ -3,6 +3,7 @@ import {Observable, tap} from "rxjs";
 import {ProductsService} from "../../products.service";
 import {JsonPipe, NgClass, NgForOf, NgIf} from "@angular/common";
 import {StatesService} from "../../states.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-shop',
@@ -22,6 +23,7 @@ export class ShopComponent implements OnInit{
   pagesArr:number[]=[]
   private readonly productsService=inject(ProductsService)
   category:number|null=null
+  private readonly route=inject(Router)
 
 
   ngOnInit() {
@@ -72,6 +74,10 @@ export class ShopComponent implements OnInit{
     this.pageCache.clearPageCache()
     this.fetchPage()
 
+  }
+
+  itemRoute(arg:string):void{
+    this.route.navigate([`/shop/${arg}`])
   }
 
 

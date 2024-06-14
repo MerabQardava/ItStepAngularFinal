@@ -1,0 +1,41 @@
+
+.item-image {
+  max-width: 100%; /* Ensure image does not exceed its container */
+  height: auto; /* Maintain aspect ratio */
+}
+.item-details {
+  background-color: #ffffff; /* White background for item details */
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Subtle shadow */
+  color: black
+;
+}
+.item-name {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+.item-price {
+  font-size: 1.25rem;
+  color: #28a745; /* Green color for price */
+  margin-bottom: 15px;
+}
+.item-category {
+  font-size: 1rem;
+  color: #6c757d; /* Gray color for category */
+  margin-bottom: 15px;
+}
+.item-description {
+  font-size: 1rem;
+  margin-bottom: 15px;
+}
+.feature-list {
+  list-style-type: none; /* Remove bullets */
+  padding: 0;
+}
+.feature-list li {
+  margin-bottom: 5px;
+}
+.action-buttons {
+  margin-top: 20px;
+}

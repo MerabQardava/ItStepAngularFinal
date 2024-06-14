@@ -9,13 +9,14 @@ export interface product{
   price:{
     beforeDiscount:number,
     current:number,
-    discount:number
+    discountPercentage:number
   }
+  rating:number,
   stock:number,
   thumbnail:string,
   title:string,
   warranty:number,
-  id:string
+  _id:string
 
 }
 
