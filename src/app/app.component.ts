@@ -1,5 +1,5 @@
 import {Component, inject, OnInit} from '@angular/core';
-import {Router, RouterLink, RouterOutlet} from '@angular/router';
+import {Router, RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
 import {HomeComponent} from "./features/home/home.component";
 import {NgIf} from "@angular/common";
 import {AuthService} from "./features/register/auth.service";
@@ -12,7 +12,7 @@ import {CartIconComponent} from "./features/cart/cart-icon/cart-icon.component";
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, HomeComponent, RouterLink, NgIf, MatSlideToggleModule, MatIcon, MatBadge, CartIconComponent],
+  imports: [RouterOutlet, HomeComponent, RouterLink, NgIf, MatSlideToggleModule, MatIcon, MatBadge, CartIconComponent, RouterLinkActive],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
