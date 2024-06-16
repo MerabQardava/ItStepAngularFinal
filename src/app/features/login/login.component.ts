@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {FormsModule} from "@angular/forms";
-import {NgIf} from "@angular/common";
+import {NgForOf, NgIf} from "@angular/common";
 import {AuthService} from "../register/auth.service";
 import {Router} from "@angular/router";
 import {HomeComponent} from "../home/home.component";
@@ -9,10 +9,11 @@ import {CartService} from "../cart/cart.service";
 @Component({
   selector: 'app-login',
   standalone: true,
-    imports: [
-        FormsModule,
-        NgIf
-    ],
+  imports: [
+    FormsModule,
+    NgIf,
+    NgForOf
+  ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })

@@ -50,7 +50,11 @@ export class ShopItemCardComponent implements OnInit{
         ).subscribe()
 
       }else{
-        this.cart.createCart(this.product._id,1).pipe().subscribe()
+        this.cart.createCart(this.product._id,1).pipe(
+          tap(response=>{
+            this.cart.checkCart()
+          })
+        ).subscribe()
       }
     }
   }

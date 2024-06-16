@@ -49,12 +49,17 @@ export class ItemComponent implements OnInit{
      this.cart.updateCartProduct(this.id,1).pipe(
        tap(response=>{
          this.cart.checkCart()
-         console.log(response)
+         console.log("mecho",response)
        })
      ).subscribe()
 
     }else{
-      this.cart.createCart(this.id,1).pipe().subscribe()
+      this.cart.createCart(this.id,1).pipe(
+        tap(response=>{
+          this.cart.checkCart()
+      })
+      ).subscribe()
+      console.log("test")
     }
 
   }

@@ -36,7 +36,8 @@ export class CartService {
       catchError(err => {
 
         if(err.status===409){
-
+          console.log("mecho")
+          this.cartData=undefined
         }
         return of(`Bad Promise: ${err}`);
       })

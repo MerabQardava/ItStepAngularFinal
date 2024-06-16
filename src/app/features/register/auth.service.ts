@@ -83,6 +83,7 @@ export class AuthService {
 
   private handleError(error: HttpErrorResponse): Observable<never> {
     console.error('An error occurred:', error.error);
-    return throwError(error.error.error);
+    return throwError(error.error.errorKeys);
   }
+
 }

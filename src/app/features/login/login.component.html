@@ -12,9 +12,13 @@
     </div>
 
     <button type="submit" class="btn btn-primary">Register</button>
-    
-    <div *ngIf="errorMessage" class="alert alert-danger mt-3">
-      {{ errorMessage }}
+
+
+
+    <div *ngIf="errorMessage">
+      <div *ngFor="let err of errorMessage"   class="alert alert-danger mt-3">
+        {{err}}
+      </div>
     </div>
 
   </form>

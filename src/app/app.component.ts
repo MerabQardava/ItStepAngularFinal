@@ -1,5 +1,5 @@
 import {Component, inject, OnInit} from '@angular/core';
-import {RouterLink, RouterOutlet} from '@angular/router';
+import {Router, RouterLink, RouterOutlet} from '@angular/router';
 import {HomeComponent} from "./features/home/home.component";
 import {NgIf} from "@angular/common";
 import {AuthService} from "./features/register/auth.service";
@@ -19,13 +19,21 @@ import {CartIconComponent} from "./features/cart/cart-icon/cart-icon.component";
 export class AppComponent implements OnInit{
   title = 'untitled2';
 
-  constructor(public authService: AuthService) {}
+  constructor(public authService: AuthService,private router: Router) {}
 
   ngOnInit(): void {
 
 
 
   }
+
+  logOut(){
+    this.authService.logOut()
+    this.router.navigate(['']);
+
+  }
+
+
 
 
 

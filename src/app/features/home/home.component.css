@@ -1,0 +1,25 @@
+#mainImageContainer{
+  position: relative;
+}
+
+#mainImageTextContainer{
+  background-color: rgba(76, 85, 84,0.8);
+  width: 35%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--main-cyan);
+  padding: 25px;
+
+}
+
+#mainImageTextContainer h1{
+  text-align: center;
+}
+
+#mainImageTextContainer p{
+  font-size: 25px;
+  text-align: center;
+  color: white;
+}

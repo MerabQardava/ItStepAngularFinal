@@ -20,7 +20,7 @@
           <a class="nav-link" routerLink="login">Login</a>
         </li>
         <li *ngIf="!(authService.getToken().length===0)" class="nav-item">
-          <div class="nav-link" (click)="authService.logOut()">Logout</div>
+          <div class="nav-link" (click)="logOut()">Logout</div>
         </li>
         <li *ngIf="!(authService.getToken().length===0)" class="nav-item">
           <a routerLink="profile" class="nav-link">Profile</a>

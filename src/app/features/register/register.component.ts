@@ -1,8 +1,11 @@
-import { Component } from '@angular/core';
+import {Component, ElementRef, ViewChild} from '@angular/core';
 import {AuthService} from "./auth.service";
 import {FormsModule} from "@angular/forms";
-import {NgIf} from "@angular/common";
+import {NgForOf, NgIf} from "@angular/common";
 import {MatFormField, MatLabel} from "@angular/material/form-field";
+import Swal from "sweetalert2";
+import {Router} from "@angular/router";
+
 
 @Component({
   selector: 'app-register',
@@ -11,7 +14,8 @@ import {MatFormField, MatLabel} from "@angular/material/form-field";
     FormsModule,
     NgIf,
     MatFormField,
-    MatLabel
+    MatLabel,
+    NgForOf
   ],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
@@ -27,12 +31,16 @@ export class RegisterComponent {
   zipcode: string = '';
   avatar: string = '';
   gender: string = '';
-  errorMessage: string = '';
+  errorMessage: string = "";
 
-  constructor(private registerService: AuthService) {}
+
+  constructor(private registerService: AuthService,private router: Router) {
+  }
 
   onSubmit() {
+
     const userData = {
+
       email: this.email,
       password: this.password,
       firstName: this.firstName,
@@ -48,6 +56,9 @@ export class RegisterComponent {
     this.registerService.signUp(userData).subscribe(
       response => {
         console.log('Registration successful', response);
+        this.router.navigate(['']);
+        Swal.fire({title: "Registration Was Successful", text:"Email with instructions on how to verify your account was sent to your inbox"})
+
       },
       error => {
         console.error('Registration failed', error);
