@@ -69,8 +69,12 @@
         <ul class="feature-list">
           <li><i class="fas fa-check-circle text-success"></i> Issue Date: {{ product?.issueDate|date:'fullDate' }}</li>
           <li><i class="fas fa-check-circle text-success"></i> Warranty: {{ product?.warranty }} Years</li>
-          <li><i class="fas fa-check-circle text-success"></i> Rating: <span *ngFor="let i of stars"><i
-            class="fas fa-star"></i></span></li>
+          <li><i *ngIf="!stars.length" class="fas fa-times-circle text-danger"></i>
+            <i *ngIf="stars.length" class="fas fa-check-circle text-success"></i> Rating: <span *ngFor="let i of stars"><i
+              class="fas fa-star"></i></span>
+          </li>
+<!--          <li><i class="fas fa-check-circle text-success"></i> Rating: <span *ngFor="let i of stars"><i-->
+<!--            class="fas fa-star"></i></span></li>-->
           <li><i *ngIf="!product?.stock" class="fas fa-times-circle text-danger"></i>
             <i *ngIf="product?.stock" class="fas fa-check-circle text-success"></i> Stock: {{ product?.stock }}
           </li>

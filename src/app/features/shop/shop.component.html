@@ -1,23 +1,16 @@
 <button (click)="changeCategory('all')">All</button>
 <button (click)="changeCategory('laptop')">Laptop</button>
 <button (click)="changeCategory('phone')">Phone</button>
+
+<!--ITEMS-->
 <div class=" px-5 py-2">
   <h1 class="mb-4">Products</h1>
   <div class="row row-cols-1 row-cols-md-4 g-4">
-    <div  *ngFor="let product of pageCache.getPage(page)?.products" class="col">
-      <div style="background: #4c5554;color: white" class="card h-100">
-        <img [src]="product.thumbnail" class="card-img-top" alt="Product Image">
-        <div class="card-body">
-          <h5 class="card-title">{{ product.title }}</h5>
-          <p class="card-text text-truncate-4">{{ product.description }}</p>
-          <button (click)="itemRoute(product._id)" type="button" class="btn btn-outline-info">Info</button>
-        </div>
-      </div>
-    </div>
+    <app-shop-item-card *ngFor="let product of pageCache.getPage(page)?.products" [product]="product"> </app-shop-item-card>
   </div>
 </div>
 
-
+<!--PAGINATION-->
 <div class="d-flex flex-row justify-content-center mt-2">
   <nav aria-label="Page navigation example ">
     <ul class="pagination pagination-lg">

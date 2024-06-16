@@ -1,6 +1,6 @@
 import {Component, inject, Input, OnInit} from '@angular/core';
 import {product} from "../../Interfaces";
-import {ItemService} from "../item.service";
+import {ItemService} from "../../item/item.service";
 import {tap} from "rxjs";
 
 @Component({

@@ -57,3 +57,15 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='cyan' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E");
 }
 
+.text-info {
+  color: #0fdcdc !important;
+}
+
+.btn-outline-info{
+  border-color: #0fdcdc !important;
+  color: #0fdcdc !important;
+}
+
+:root{
+  --main-cyan:#0fdcdc;
+}

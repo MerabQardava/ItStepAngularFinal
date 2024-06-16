@@ -37,7 +37,7 @@ export class ItemComponent {
       tap(response=>{
         this.product=response;
         this.images=[...response.images]
-        this.stars=Array(response.rating).fill(0).map((x, i) => i);
+        this.stars=Array(Math.ceil(response.rating)).fill(0).map((x, i) => i);
         console.log(response)
       })
     ).subscribe()
@@ -56,8 +56,6 @@ export class ItemComponent {
     }else{
       this.cart.createCart(this.id,1).pipe().subscribe()
     }
-
-
 
   }
 

@@ -4,6 +4,7 @@ import {ProductsService} from "../../products.service";
 import {JsonPipe, NgClass, NgForOf, NgIf} from "@angular/common";
 import {StatesService} from "../../states.service";
 import {Router} from "@angular/router";
+import {ShopItemCardComponent} from "./shop-item-card/shop-item-card.component";
 
 @Component({
   selector: 'app-shop',
@@ -12,7 +13,8 @@ import {Router} from "@angular/router";
     NgForOf,
     JsonPipe,
     NgIf,
-    NgClass
+    NgClass,
+    ShopItemCardComponent
   ],
   templateUrl: './shop.component.html',
   styleUrl: './shop.component.css'
@@ -76,9 +78,7 @@ export class ShopComponent implements OnInit{
 
   }
 
-  itemRoute(arg:string):void{
-    this.route.navigate([`/shop/${arg}`])
-  }
+
 
 
 
