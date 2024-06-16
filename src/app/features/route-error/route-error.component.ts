@@ -2,14 +2,14 @@ import { Component } from '@angular/core';
 import {RouterLink} from "@angular/router";
 
 @Component({
-  selector: 'app-home',
+  selector: 'app-route-error',
   standalone: true,
   imports: [
     RouterLink
   ],
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.css'
+  templateUrl: './route-error.component.html',
+  styleUrl: './route-error.component.css'
 })
-export class HomeComponent {
+export class RouteErrorComponent {
 
 }

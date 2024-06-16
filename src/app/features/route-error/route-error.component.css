@@ -1,0 +1,20 @@
+.container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.img-fluid {
+  max-width: 100%;
+}
+
+.btn-primary {
+  background-color: #4c5554; /* Example color */
+  border-color: #4c5554; /* Example color */
+}
+
+.btn-primary:hover {
+  background-color: #3b423f; /* Darker shade for hover */
+  border-color: #3b423f; /* Darker shade for hover */
+}
