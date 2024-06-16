@@ -25,9 +25,7 @@
         <li *ngIf="!(authService.getToken().length===0)" class="nav-item">
           <a routerLink="profile" class="nav-link">Profile</a>
         </li>
-        <li  class="nav-item">
-          <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-        </li>
+
         <app-cart-icon  *ngIf="!(authService.getToken().length===0)" ></app-cart-icon>
 
 

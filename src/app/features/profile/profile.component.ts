@@ -1,7 +1,6 @@
 import {Component, inject, OnInit} from '@angular/core';
 import {AuthService} from "../register/auth.service";
 import {tap} from "rxjs";
-import {VerificationModalComponent} from "../../Components/verification-modal/verification-modal.component";
 import {NgIf} from "@angular/common";
 import {UserData} from "../Interfaces";
 
@@ -9,7 +8,6 @@ import {UserData} from "../Interfaces";
   selector: 'app-profile',
   standalone: true,
   imports: [
-    VerificationModalComponent,
     NgIf
   ],
   templateUrl: './profile.component.html',
