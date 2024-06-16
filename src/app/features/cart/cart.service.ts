@@ -61,4 +61,16 @@ export class CartService {
     return this.http.patch(this.apiUrl, {id:productId,quantity:quantity}, { headers });
   }
 
+  deleteProduct(productId: string): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.auth.getToken()}`,
+      'Accept': 'application/json'
+    });
+
+    const body = { id: productId };
+
+    return this.http.delete("https://api.everrest.educata.dev/shop/cart/product", { headers: headers, body: body });
+  }
+
 }

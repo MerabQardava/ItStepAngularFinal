@@ -1,11 +1,68 @@
 
 
-<div class="col">
-  <div class="card">
-    <img [src]="itemData?.thumbnail" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">{{itemData?.title}}</h5>
-      <p class="card-text text-truncate-4">{{itemData?.description}}</p>
+<!--<div class="col">-->
+<!--  <div class="card">-->
+<!--    <img [src]="itemData?.thumbnail" class="card-img-top" alt="...">-->
+<!--    <div class="card-body">-->
+<!--      <h5 class="card-title">{{itemData?.title}}</h5>-->
+<!--      <p class="card-text text-truncate-4">{{itemData?.description}}</p>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+
+
+<div class="card mb-3" >
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img [src]="itemData?.thumbnail" class="img-fluid rounded-start" alt="...">
+      <div style="width: 100%;" class="px-1 mb-1">
+
+        <button  style="width: 100%" (click)="deleteItem()" type="button" class="btn my-2 btn-outline-danger">Delete</button>
+        <button  style="width: 100%" (click)="itemRoute(itemData?._id)" type="button" class="btn btn-outline-info">Info</button>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">{{itemData?.title}}</h5>
+        <p class="card-text text-truncate-4">{{itemData?.description}}</p>
+<!--        PRICE-->
+        <div class="p-2 rounded"  style="font-size: 1.2rem; border:1px solid var(--main-cyan)">
+          <div  class="container mt-3">
+            <div class="row">
+              <div style="padding: 0" class="col">
+                <p *ngIf="itemData?.price?.discountPercentage" class="item-price">
+                  Price:
+                  <span class="text-muted">
+                    <del>{{ itemData?.price?.beforeDiscount }}$</del>
+                </span>
+                  <span class="text-success">
+                    {{ itemData?.price?.current }}$
+                </span>
+                  <span class="text-info">
+                    ({{ itemData?.price?.discountPercentage }}% off)
+                </span>
+                </p>
+                <p *ngIf="!itemData?.price?.discountPercentage" class="item-price">
+                  <span class="text-success"><span style="color: white">Price:</span> {{ itemData?.price?.current }}$</span>
+                </p>
+              </div>
+            </div>
+          </div>
+          <p><i class="fas fa-check-circle text-success"></i> Warranty: {{ itemData?.warranty }} Years</p>
+          <p><i *ngIf="!stars.length" class="fas fa-times-circle text-danger"></i>
+            <i *ngIf="stars.length" class="fas fa-check-circle text-success"></i> Rating: <span *ngFor="let i of stars"><i
+              class="fas fa-star"></i></span>
+          </p>
+          <p><i *ngIf="!itemData?.stock" class="fas fa-times-circle text-danger"></i>
+            <i *ngIf="itemData?.stock" class="fas fa-check-circle text-success"></i> Stock: {{ itemData?.stock }}
+          </p>
+
+
+
+        </div>
+
+
+      </div>
     </div>
   </div>
 </div>

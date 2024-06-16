@@ -1,11 +1,11 @@
-<div   class="col">
-  <div style="background: #4c5554;color: white" class="card h-100">
+<div  class="col">
+  <div  class="card h-100">
     <img style="max-height: 350px;object-fit: fill" [src]="product?.thumbnail" class="card-img-top" alt="Product Image">
     <div class="card-body">
       <h5 class="card-title">{{ product?.title }}</h5>
       <p class="card-text text-truncate-4">{{ product?.description }}</p>
 
-      <div class="p-2 rounded"  style="font-size: 1.2rem; border:1px solid var(--main-cyan)">
+      <div  class="p-2 rounded"  style="font-size: 1.2rem; border:1px solid var(--main-cyan)">
         <div  class="container mt-3">
           <div class="row">
             <div style="padding: 0" class="col">
@@ -36,9 +36,9 @@
           <i *ngIf="product?.stock" class="fas fa-check-circle text-success"></i> Stock: {{ product?.stock }}
         </p>
 
-      <button (click)="itemRoute(product?._id)" type="button" class="btn btn-outline-info">Info</button>
         <div class="action-buttons">
-          <button [disabled]='!product?.stock || auth.getToken()===""' (click)="add()" class="btn btn-primary mr-3"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+          <button (click)="itemRoute(product?._id)" type="button" class="btn btn-outline-info">Info</button>
+          <button [disabled]='!product?.stock || auth.getToken()===""' (click)="add()" class="btn mx-3 btn-primary mr-3"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
         </div>
       </div>
 

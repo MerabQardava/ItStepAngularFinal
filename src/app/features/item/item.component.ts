@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {ProductsService} from "../../products.service";
 import {ItemService} from "./item.service";
@@ -19,7 +19,7 @@ import {CartService} from "../cart/cart.service";
   templateUrl: './item.component.html',
   styleUrl: './item.component.css'
 })
-export class ItemComponent {
+export class ItemComponent implements OnInit{
   id=""
   product?: product ;
   images:string[]=[]

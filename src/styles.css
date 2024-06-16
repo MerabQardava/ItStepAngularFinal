@@ -69,3 +69,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 :root{
   --main-cyan:#0fdcdc;
 }
+
+.card{
+  background-color: #4c5554 !important;
+  color: white;
+
+}

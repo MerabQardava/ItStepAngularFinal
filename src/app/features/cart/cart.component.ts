@@ -3,6 +3,7 @@ import {CartService} from "./cart.service";
 import {NgForOf, NgIf} from "@angular/common";
 import {Cart} from "../Interfaces";
 import {CartItemCardComponent} from "./cart-item-card/cart-item-card.component";
+import {tap} from "rxjs";
 
 @Component({
   selector: 'app-cart',
@@ -22,6 +23,16 @@ export class CartComponent implements OnInit{
   ngOnInit() {
     console.log(this.cart.cartData)
     this.cartData=this.cart.cartData
+  }
+
+  refreshCart(){
+    this.cart.getCart().pipe(
+      tap(response=>{
+        this.cart.checkCart()
+        this.cartData=response
+        console.log(this.cartData)
+      })
+    ).subscribe()
   }
 
 
