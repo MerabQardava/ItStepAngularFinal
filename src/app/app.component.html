@@ -1,10 +1,10 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
+<nav data-bs-theme="dark" class="navbar navbar-expand-lg bg-body-tertiary">
+  <div style="" class="container-fluid">
     <a class="navbar-brand" href="#">Navbar</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
+    <div style="position: relative" class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" routerLink="">Home</a>
@@ -12,6 +12,7 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="shop">Shop</a>
         </li>
+
         <li *ngIf="authService.getToken().length===0" class="nav-item">
           <a class="nav-link" routerLink="register">Register</a>
         </li>
@@ -21,9 +22,15 @@
         <li *ngIf="!(authService.getToken().length===0)" class="nav-item">
           <div class="nav-link" (click)="authService.logOut()">Logout</div>
         </li>
-        <li class="nav-item">
+        <li *ngIf="!(authService.getToken().length===0)" class="nav-item">
+          <a routerLink="profile" class="nav-link">Profile</a>
+        </li>
+        <li  class="nav-item">
           <a class="nav-link disabled" aria-disabled="true">Disabled</a>
         </li>
+        <app-cart-icon  *ngIf="!(authService.getToken().length===0)" ></app-cart-icon>
+
+
       </ul>
     </div>
   </div>

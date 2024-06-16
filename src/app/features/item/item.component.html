@@ -1,15 +1,17 @@
-
 <div class="container mt-5">
   <div class="row">
 
-    <div  class="col-lg-6">
+    <div class="col-lg-6">
       <div id="carouselExampleIndicators" class="carousel slide">
         <div class="carousel-indicators">
-          <button  type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                  aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                  aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                  aria-label="Slide 3"></button>
         </div>
-        <div  class=" carousel-inner">
+        <div class=" carousel-inner">
           <div style="height: 500px" class="carousel-item active">
             <img [src]="images[0]" class="img-fluid d-block w-100 h-100" style="object-fit: contain;" alt="Image 1">
           </div>
@@ -20,11 +22,13 @@
             <img [src]="images[2]" class="img-fluid d-block w-100 h-100" style="object-fit: contain;" alt="Image 3">
           </div>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                data-bs-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Previous</span>
         </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                data-bs-slide="next">
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Next</span>
         </button>
@@ -34,43 +38,47 @@
     <div class="col-lg-6">
 
       <div class="item-details">
-        <h2 class="item-name">{{product?.title}}</h2>
-        <p class="item-category">Category: <span class="font-weight-bold">{{product?.category?.name}}</span></p>
+        <h2 class="item-name">{{ product?.title }}</h2>
+        <p class="item-category">Category: <span class="font-weight-bold">{{ product?.category?.name }}</span></p>
 
         <div class="container mt-3">
           <div class="row">
             <div class="col">
-              <p class="item-price">
+              <p *ngIf="product?.price?.discountPercentage" class="item-price">
                 Price:
                 <span class="text-muted">
-                    <del>{{product?.price?.beforeDiscount}}$</del>
+                    <del>{{ product?.price?.beforeDiscount }}$</del>
                 </span>
                 <span class="text-success">
-                    {{product?.price?.current}}$
+                    {{ product?.price?.current }}$
                 </span>
                 <span class="text-info">
-                    ({{product?.price?.discountPercentage}}% off)
+                    ({{ product?.price?.discountPercentage }}% off)
                 </span>
+              </p>
+              <p *ngIf="!product?.price?.discountPercentage" class="item-price">
+                <span class="text-success">{{ product?.price?.current }}$</span>
               </p>
             </div>
           </div>
         </div>
 
-        <p class="item-description">{{product?.description}}</p>
+        <p class="item-description">{{ product?.description }}</p>
 
 
         <ul class="feature-list">
-          <li><i class="fas fa-check-circle text-success"></i> Issue Date: {{product?.issueDate|date:'fullDate'}}</li>
-          <li><i class="fas fa-check-circle text-success"></i> Warranty: {{product?.warranty}} Years</li>
-          <li><i class="fas fa-check-circle text-success"></i> Rating: <span *ngFor="let i of stars"><i class="fas fa-star"></i></span> </li>
+          <li><i class="fas fa-check-circle text-success"></i> Issue Date: {{ product?.issueDate|date:'fullDate' }}</li>
+          <li><i class="fas fa-check-circle text-success"></i> Warranty: {{ product?.warranty }} Years</li>
+          <li><i class="fas fa-check-circle text-success"></i> Rating: <span *ngFor="let i of stars"><i
+            class="fas fa-star"></i></span></li>
           <li><i *ngIf="!product?.stock" class="fas fa-times-circle text-danger"></i>
-            <i *ngIf="product?.stock" class="fas fa-check-circle text-success"></i> Stock: {{product?.stock}}</li>
+            <i *ngIf="product?.stock" class="fas fa-check-circle text-success"></i> Stock: {{ product?.stock }}
+          </li>
         </ul>
 
 
-
         <div class="action-buttons">
-          <button class="btn btn-primary mr-3"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+          <button [disabled]="!product?.stock" (click)="add()" class="btn btn-primary mr-3"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
           <button class="btn btn-outline-secondary"><i class="fas fa-heart"></i> Add to Wishlist</button>
         </div>
       </div>

@@ -1,0 +1,25 @@
+<!-- cart.component.html -->
+<div class="container mt-4" *ngIf="cartData; else loading">
+  <h2 class="mb-4">Your Shopping Cart</h2>
+
+  <div class="card mb-3">
+    <div class="card-body">
+      <h5 class="card-title">Cart Summary</h5>
+      <p class="card-text">Total Quantity: {{ cartData.total.quantity }}</p>
+      <p class="card-text">Total Products: {{ cartData.total.products }}</p>
+      <p class="card-text">Current Total Price: ${{ cartData.total.price.current }}</p>
+      <p class="card-text text-muted">Before Discount Price: ${{ cartData.total.price.beforeDiscount }}</p>
+    </div>
+  </div>
+
+  <div class="row row-cols-1 row-cols-md-4 g-4">
+    <app-cart-item-card *ngFor="let product of cartData.products" [productID]="product.productId"></app-cart-item-card>
+  </div>
+
+</div>
+
+<ng-template #loading>
+  <p>Loading cart data...</p>
+</ng-template>
+
+

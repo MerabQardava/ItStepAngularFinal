@@ -25,3 +25,51 @@ export interface pageData{
   products:product[],
   total:number
 }
+
+export interface UserData {
+  _id: string;
+  firstName: string;
+  lastName: string;
+  age: number;
+  email: string;
+  address: string;
+  role: string;
+  zipcode: string;
+  avatar: string;
+  gender: string;
+  phone: string;
+  verified: boolean;
+  iat: number;
+  exp: number;
+}
+
+
+
+// CART
+
+export interface Cart {
+  total: CartTotal;
+  _id: string;
+  userId: string;
+  createdAt: string;
+  products: CartProduct[];
+}
+
+export interface CartTotal {
+  price: CartPrice;
+  quantity: number;
+  products: number;
+}
+
+export interface CartPrice {
+  current: number;
+  beforeDiscount: number;
+}
+
+export interface CartProduct {
+  quantity: number;
+  pricePerQuantity: number;
+  beforeDiscountPrice: number;
+  productId: string;
+}
+

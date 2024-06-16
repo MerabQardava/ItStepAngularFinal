@@ -1,0 +1,24 @@
+<div class="container mt-4">
+  <div class="card">
+    <div class="card-header">
+      <h3 class="card-title">User Profile</h3>
+    </div>
+    <div class="card-body">
+      <div *ngIf="user">
+        <img [src]="user.avatar" alt="User Avatar" class="img-fluid rounded-circle mb-3" style="max-width: 150px;">
+        <h4>{{ user.firstName }} {{ user.lastName }}</h4>
+        <p>Email: {{ user.email }}</p>
+        <p>Age: {{ user.age }}</p>
+        <p>Address: {{ user.address }}</p>
+        <p>Phone: {{ user.phone }}</p>
+        <p>Gender: {{ user.gender }}</p>
+
+      </div>
+      <div *ngIf="!user">
+        <p>Loading user profile...</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-verification-modal *ngIf="!user"></app-verification-modal>

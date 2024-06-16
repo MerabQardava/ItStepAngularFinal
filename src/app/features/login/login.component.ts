@@ -4,6 +4,7 @@ import {NgIf} from "@angular/common";
 import {AuthService} from "../register/auth.service";
 import {Router} from "@angular/router";
 import {HomeComponent} from "../home/home.component";
+import {CartService} from "../cart/cart.service";
 
 @Component({
   selector: 'app-login',
@@ -20,7 +21,7 @@ export class LoginComponent {
   password: string = '';
   errorMessage: string = '';
 
-  constructor(private authService: AuthService,private router: Router) {}
+  constructor(private authService: AuthService,private router: Router,private cart:CartService) {}
 
   onSubmit() {
     const credentials = {
@@ -33,6 +34,7 @@ export class LoginComponent {
         console.log('Sign-in successful', response);
         this.authService.setToken(response.access_token)
         this.router.navigate(['']);
+        this.cart.checkCart()
 
       },
       error => {

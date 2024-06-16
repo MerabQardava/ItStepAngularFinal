@@ -2,9 +2,11 @@ import {Component, inject} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {ProductsService} from "../../products.service";
 import {ItemService} from "./item.service";
-import {tap} from "rxjs";
+import {catchError, of, tap} from "rxjs";
 import {product} from "../Interfaces";
 import {DatePipe, NgForOf, NgIf} from "@angular/common";
+import {CartService} from "../cart/cart.service";
+
 
 @Component({
   selector: 'app-item',
@@ -24,6 +26,7 @@ export class ItemComponent {
   stars:number[]=[]
   private readonly itemService=inject(ItemService)
   constructor(private route: ActivatedRoute) { }
+  private cart=inject(CartService)
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -40,5 +43,23 @@ export class ItemComponent {
     ).subscribe()
 
   }
+
+  add():void{
+    if(this.cart.cartData){
+     this.cart.updateCartProduct(this.id,1).pipe(
+       tap(response=>{
+         this.cart.checkCart()
+         console.log(response)
+       })
+     ).subscribe()
+
+    }else{
+      this.cart.createCart(this.id,1).pipe().subscribe()
+    }
+
+
+
+  }
+
 
 }
